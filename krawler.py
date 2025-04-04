@@ -3,10 +3,22 @@ import re
 import requests
 import os
 from datetime import datetime
-import undetected_chromedriver as uc
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
+
+from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
+import chromedriver_autoinstaller
+
+# Automatically installs the correct chromedriver
+chromedriver_autoinstaller.install()
+
+# Set Chrome options
+options = Options()
+options.add_argument("--headless")
+options.add_argument("--no-sandbox")
+options.add_argument("--disable-dev-shm-usage")
+
+# Create the driver using those options
+driver = webdriver.Chrome(options=options)
 
 # === CONFIG ===
 KNOWN_DATE = "June 1 to June 17"
@@ -67,13 +79,6 @@ def check_for_commands():
 
     except Exception as e:
         print("❌ Command check error:", e)
-
-# === CHROME OPTIONS ===
-options = uc.ChromeOptions()
-options.add_argument("--headless=new")
-options.add_argument("--no-sandbox")
-options.add_argument("--disable-dev-shm-usage")
-options.add_argument("--disable-gpu")
 
 # You can add this if needed:
 # options.add_argument("--disable-extensions")
