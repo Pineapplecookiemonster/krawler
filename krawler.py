@@ -25,7 +25,7 @@ driver = webdriver.Chrome(options=options)
 
 # === CONFIG ===
 KNOWN_DATE = "June 1 to June 17"
-REAL_URL = "http://localhost:8000/test_version2.html"  # ← Replace with real site
+REAL_URL = "https://www.usjticketing.com/expressPass"  # ← Replace with real site
 CHECK_INTERVAL = 10  # seconds
 
 # === TELEGRAM CONFIG ===
