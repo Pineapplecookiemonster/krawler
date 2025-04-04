@@ -1,1 +1,1 @@
-worker: python krawler.py
+worker: bash install.sh && python krawler.py
