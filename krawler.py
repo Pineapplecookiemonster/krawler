@@ -8,20 +8,14 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-import chromedriver_autoinstaller
-
-# Automatically installs the correct chromedriver
-chromedriver_autoinstaller.install()
 
 options = Options()
+options.binary_location = "/usr/bin/chromium"  # ← Railway chromium path
 options.add_argument("--headless")
 options.add_argument("--no-sandbox")
 options.add_argument("--disable-dev-shm-usage")
 
-
-
-# Create the driver using those options
-driver = webdriver.Chrome(options=options)
+driver = webdriver.Chrome(executable_path="/usr/bin/chromedriver", options=options)
 
 # === CONFIG ===
 KNOWN_DATE = "June 1 to June 17"
