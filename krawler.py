@@ -3,19 +3,22 @@ import re
 import requests
 import os
 from datetime import datetime
-
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 import chromedriver_autoinstaller
 
 # Automatically installs the correct chromedriver
 chromedriver_autoinstaller.install()
 
-# Set Chrome options
 options = Options()
 options.add_argument("--headless")
 options.add_argument("--no-sandbox")
 options.add_argument("--disable-dev-shm-usage")
+
+
 
 # Create the driver using those options
 driver = webdriver.Chrome(options=options)
@@ -86,7 +89,7 @@ def check_for_commands():
 
 # === MAIN MONITOR LOOP ===
 while True:
-    driver = uc.Chrome(options=options)
+    driver = webdriver.Chrome(options=options)
     driver.get(REAL_URL)
 
     try:
